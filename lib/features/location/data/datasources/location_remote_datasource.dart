@@ -9,6 +9,7 @@ abstract class LocationRemoteDataSource {
   Future<ph.PermissionStatus> checkPermission();
   Future<ph.PermissionStatus> requestPermission();
   Future<bool> isLocationServiceEnabled();
+  Future<bool> openAppSettings();
 }
 
 class LocationRemoteDataSourceImpl implements LocationRemoteDataSource {
@@ -55,5 +56,10 @@ class LocationRemoteDataSourceImpl implements LocationRemoteDataSource {
   @override
   Future<bool> isLocationServiceEnabled() async {
     return await Geolocator.isLocationServiceEnabled();
+  }
+
+  @override
+  Future<bool> openAppSettings() async {
+    return await ph.openAppSettings();
   }
 }
